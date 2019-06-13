@@ -1,0 +1,37 @@
+{
+  "name": "snippy-api",
+  "version": "1.0.0",
+  "description": "The REST API server for the snippy project",
+  "main": "app.js",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joranquinten/snippy-api.git"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "snippy",
+    "mongodb"
+  ],
+  "author": "Joran Quinten",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joranquinten/snippy-api/issues"
+  },
+  "homepage": "https://github.com/joranquinten/snippy-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-list-endpoints": "^4.0.1",
+    "helmet": "^3.18.0",
+    "minimist": "^1.2.0",
+    "mongoose": "^5.5.12",
+    "nodemon": "^1.19.1"
+  }
+}
