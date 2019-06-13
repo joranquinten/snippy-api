@@ -1,5 +1,5 @@
 require("dotenv").config();
-//https://codeburst.io/writing-a-crud-app-with-node-js-and-mongodb-e0827cbbdafb
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
