@@ -37,9 +37,7 @@ exports.snippets_search = async (req, res, next) => {
   const [snippets, count] = await Promise.all([snippetsPromise, countPromise]);
 
   if (!snippets.length) {
-    return next(
-      `Searchquery ${query} returned no results.`
-    );
+    res.send({ snippets: [], count: 0 });
   }
 
   if (!snippets.length && skip) {
