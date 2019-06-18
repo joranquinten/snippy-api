@@ -48,3 +48,57 @@ exports.snippets_search = async (req, res, next) => {
 
   res.send({ snippets, count });
 };
+
+exports.snippets_search_tag = async (req, res, next) => {
+  const tag = req.params.tag;
+  const page = req.params.page || 1;
+  const limit = 15;
+  const skip = page * limit - limit;
+
+  const snippetsPromise = Snippet.find({tags: tag })
+    .skip(skip)
+    .limit(limit)
+    .sort({ created: "desc" });
+
+  const countPromise = Snippet.collection.find({tags: tag }).count();
+  const [snippets, count] = await Promise.all([snippetsPromise, countPromise]);
+
+  if (!snippets.length) {
+    res.send({ snippets: [], count: 0 });
+  }
+
+  if (!snippets.length && skip) {
+    return next(
+      `OMG!!! You asked for a page (page ${page}) that doesn't exist.`
+    );
+  }
+
+  res.send({ snippets, count });
+};
+
+exports.snippets_search_language = async (req, res, next) => {
+  const language = req.params.language;
+  const page = req.params.page || 1;
+  const limit = 15;
+  const skip = page * limit - limit;
+
+  const snippetsPromise = Snippet.find({languages: language })
+    .skip(skip)
+    .limit(limit)
+    .sort({ created: "desc" });
+
+  const countPromise = Snippet.collection.find({languages: language }).count();
+  const [snippets, count] = await Promise.all([snippetsPromise, countPromise]);
+
+  if (!snippets.length) {
+    res.send({ snippets: [], count: 0 });
+  }
+
+  if (!snippets.length && skip) {
+    return next(
+      `OMG!!! You asked for a page (page ${page}) that doesn't exist.`
+    );
+  }
+
+  res.send({ snippets, count });
+};
