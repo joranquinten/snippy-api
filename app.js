@@ -43,6 +43,12 @@ listEndpoints(app)
     );
   });
 
+app.use(function (err, req, res) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send('You are not authorized for this action. Please login or stop trying!');
+  }
+});
+
 const isDevelop = process.env.NODE_ENV === "development";
 const port = isDevelop ? 5050 : 8080;
 
