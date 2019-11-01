@@ -31,7 +31,7 @@
     "express-list-endpoints": "^4.0.1",
     "helmet": "^3.18.0",
     "minimist": "^1.2.0",
-    "mongoose": "^5.5.12",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.19.1"
   }
 }
